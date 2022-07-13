@@ -10,7 +10,7 @@
     Smartly colored elements for your Wordpress website.
     <br />
     <br />
-    <a href="https://github.com/fahmifitu/colorful-yt">View Demo</a>
+    <a href="https://github.com/fahmifitu/colorful-yt/tree/main/images">View Screenshots</a>
     ·
     <a href="https://github.com/fahmifitu/colorful-yt/issues">Report Bug</a>
     ·
