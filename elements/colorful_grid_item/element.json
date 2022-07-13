@@ -1,0 +1,138 @@
+{
+    "@import": "./element.php",
+    "name": "colorful_grid_item",
+    "title": "Item",
+    "width": 500,
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "defaults": {
+        "colorful_type": "image"
+    },
+    "fields": {
+        "title": {
+            "label": "Title",
+            "source": true
+        },
+        "meta": {
+            "label": "Meta",
+            "source": true
+        },
+        "content": {
+            "label": "Content",
+            "type": "editor",
+            "source": true
+        },
+        "image": "${builder.image}",
+        "image_alt": {
+            "label": "Image Alt",
+            "source": true,
+            "enable": "image"
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Instead of using a custom image, you can click on the pencil to pick an icon from the icon library.",
+            "type": "icon",
+            "source": true,
+            "enable": "!image"
+        },
+        "link": "${builder.link}",
+        "link_text": {
+            "label": "Link Text",
+            "description": "Set a different link text for this item.",
+            "source": true,
+            "enable": "link"
+        },
+        "tags": {
+            "label": "Tags",
+            "description": "Enter a comma-separated list of tags, for example, <code>blue, white, black</code>.",
+            "source": true
+        },
+        "panel_style": {
+            "label": "Style",
+            "description": "Select one of the boxed card or tile styles or a blank panel.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Card Default": "card-default",
+                "Card Primary": "card-primary",
+                "Card Secondary": "card-secondary",
+                "Card Hover": "card-hover",
+                "Tile Default": "tile-default",
+                "Tile Muted": "tile-muted",
+                "Tile Primary": "tile-primary",
+                "Tile Secondary": "tile-secondary"
+            }
+        },
+        "colorful_type": {
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "Image": "image",
+                "Custom": "custom"
+            }
+        },
+        "panel_background_color": {
+            "type": "color",
+            "label": "Background Color",
+            "show": "colorful_type === 'custom'",
+            "source": true
+        },
+        "panel_text_color": {
+            "type": "color",
+            "label": "Text Custom Color",
+            "show": "colorful_type === 'custom' && text_color === 'custom'",
+            "source": true
+        },
+        "text_color": {
+            "label": "Text Color",
+            "description": "Set a different text color for this item.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Light": "light",
+                "Dark": "dark",
+                "Image": "image",
+                "Custom Color": "custom"
+            },
+            "source": true,
+            "show": "colorful_type === 'custom'"
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [{
+                    "title": "Content",
+                    "fields": [
+                        "title",
+                        "meta",
+                        "content",
+                        "image",
+                        "image_alt",
+                        "icon",
+                        "link",
+                        "link_text",
+                        "tags"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [{
+                        "label": "Panel",
+                        "type": "group",
+                        "fields": ["panel_style"]
+                    }, {
+                        "label": "Colorful Panel",
+                        "type": "group",
+                        "fields": ["colorful_type", "panel_background_color", "text_color", "panel_text_color"]
+                    }]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}
